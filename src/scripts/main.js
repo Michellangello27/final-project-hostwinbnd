@@ -8,7 +8,7 @@
 import { stays } from './stays.js';
 import { loadStays } from './utils.js';
 
-const staysContainer = document.querySelector('#stays-container');
+const staysContainer = document.querySelector('#stays-contenedor');
 
 loadStays(stays, staysContainer);
 
