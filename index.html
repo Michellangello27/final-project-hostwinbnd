@@ -13,7 +13,6 @@
 
 
     <header class="px-4 md:px-6 pt-4 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-
         <div class="flex items-center">
             <img src="./src/images/icons/logo-f7862584.svg" alt="windbnb logo" class="w-24 md:w-28 object-contain" />
         </div>
@@ -34,7 +33,7 @@
                 </button>
 
 
-                <button
+                <button id="search-button"
                     class="px-4 py-2 border-l hover:bg-gray-100 active:bg-gray-200 focus:outline-none transition duration-150 ease-in-out shadow-md active:shadow-inner active:translate-y-[1px] cursor-pointer">
                     <svg class="w-4 h-4 md:w-5 md:h-5 text-red-500" fill="none" stroke="currentColor" stroke-width="2"
                         viewBox="0 0 24 24">
@@ -46,15 +45,103 @@
         </div>
     </header>
 
+
     <section class="px-4 md:px-6 py-4 flex justify-between items-center">
         <h2 class="text-xl font-bold">Stays in Finland</h2>
         <span class="text-sm text-gray-500">12+ stays</span>
     </section>
 
-    <!-- Contenedor de Stays -->
+
     <main id="stays-contenedor" class="px-4 md:px-6 pb-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        <!-- Las tarjetas se inyectan dinámicamente aquí -->
+        //Aqui van los stays de manera dinámica
     </main>
+
+
+    <div id="modal" class="hidden fixed inset-0 z-50 bg-slate-950/70">
+        <div class="bg-white w-full max-w-3xl mx-auto mt-12 md:mt-20 p-4 md:p-8 rounded-xl shadow-md"
+            id="modal-content">
+
+            <div class="flex justify-between items-center mb-4 md:hidden">
+                <h2 class="text-sm font-bold text-gray-700">Edit your search</h2>
+                <button class="text-xl font-bold text-gray-700" id="close-modal">&times;</button>
+            </div>
+
+
+            <div class="hidden md:flex gap-4">
+                <div
+                    class="flex-1 shadow-md border border-gray-200 h-14 rounded-l-lg px-4 py-2 flex flex-col justify-between focus-within:border-gray-900 focus-within:rounded-r-lg">
+                    <label for="location" class="text-[10px] font-bold text-gray-500 uppercase">Location</label>
+                    <input type="text" name="location" id="location" placeholder="Add location"
+                        class="w-full outline-none text-sm placeholder:text-gray-400" />
+                </div>
+                <div
+                    class="flex-1 shadow-md border-t border-b border-gray-200 h-14 px-4 py-2 flex flex-col justify-between focus-within:border-x focus-within:border-gray-900 focus-within:rounded-lg">
+                    <label for="guests" class="text-[10px] font-bold text-gray-500 uppercase">Guests</label>
+                    <input type="text" name="guests" id="guests" placeholder="Add guests"
+                        class="w-full outline-none text-sm placeholder:text-gray-400" />
+                </div>
+                <div
+                    class="flex-1 shadow-md border border-gray-200 h-14 rounded-r-lg px-4 py-2 flex items-center justify-center">
+                    <button
+                        class="bg-red-500 hover:bg-red-600 text-white font-semibold px-4 py-2 rounded-2xl shadow-sm flex items-center gap-2 transition focus:outline-none">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                        </svg>
+                        <span>Search</span>
+                    </button>
+                </div>
+            </div>
+
+
+            <div class="flex flex-col gap-4 md:hidden">
+                <div class="w-full shadow-md border border-gray-200 rounded-xl px-4 py-2">
+                    <label for="location-mobile" class="text-[10px] font-bold text-gray-500 uppercase">Location</label>
+                    <input type="text" name="location" id="location-mobile" placeholder="Add location"
+                        class="w-full outline-none text-sm placeholder:text-gray-400" />
+                </div>
+
+                <div class="w-full shadow-md border border-gray-200 rounded-xl px-4 py-2">
+                    <label for="guests-mobile" class="text-[10px] font-bold text-gray-500 uppercase">Guests</label>
+                    <input type="text" name="guests" id="guests-mobile" placeholder="Add guests"
+                        class="w-full outline-none text-sm placeholder:text-gray-400" />
+                </div>
+
+
+                <div class="flex flex-col gap-6">
+                    <div>
+                        <h3 class="text-sm font-bold text-gray-700">Adults</h3>
+                        <p class="text-xs text-gray-400">Ages 13 or above</p>
+                        <div class="flex items-center gap-4 mt-1">
+                            <button class="border px-2 rounded text-lg">-</button>
+                            <span class="text-sm font-medium">4</span>
+                            <button class="border px-2 rounded text-lg">+</button>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-sm font-bold text-gray-700">Children</h3>
+                        <p class="text-xs text-gray-400">Ages 13 or below</p>
+                        <div class="flex items-center gap-4 mt-1">
+                            <button class="border px-2 rounded text-lg">-</button>
+                            <span class="text-sm font-medium">1</span>
+                            <button class="border px-2 rounded text-lg">+</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="w-full flex justify-center mt-6">
+                    <button
+                        class="bg-red-500 hover:bg-red-600 text-white font-semibold px-6 py-3 rounded-2xl shadow-md flex items-center gap-2 transition">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                        </svg>
+                        <span>Search</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </body>
 

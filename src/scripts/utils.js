@@ -1,8 +1,8 @@
 /**
- * Módulo de funciones utilitarias para Windbnb.
- * Aquí se gestionan funciones de renderizado, filtrado y ayuda general.
+ * Carga las estancias dentro del contenedor HTML.
+ * @param {Array} array - Lista de estancias.
+ * @param {HTMLElement} elementHTML - Contenedor donde se renderiza el contenido.
  */
-
 export function loadStays(array, elementHTML) {
   elementHTML.innerHTML = "";
   array.forEach(function (stay) {
@@ -11,13 +11,14 @@ export function loadStays(array, elementHTML) {
   });
 }
 
+
 export function stayTemplate(stay) {
   const superHost = stay.superHost
     ? '<span class="text-xs font-bold border px-2 py-0.5 rounded-md">SUPERHOST</span>'
     : "";
 
   let siCama = "";
-  if (stay.beds !== "null") {
+  if (stay.beds !== null) {
     siCama = stay.beds ? ` · ${stay.beds} bed${stay.beds > 1 ? "s" : ""}` : "";
   }
 
@@ -36,4 +37,28 @@ export function stayTemplate(stay) {
       <p class="font-semibold text-sm mt-1">${stay.title}</p>
     </div>
   `;
+}
+
+export function toggleModal() {
+  const modal = document.getElementById("modal");
+  console.log("toggleModal ejecutado", modal); // ***********
+  modal.classList.toggle("hidden");
+}
+
+export function addCityFilter(stays, container) {
+  const citySelect = document.getElementById("city-select");
+  if (citySelect && container) {
+    citySelect.addEventListener("change", () => {
+      const selected = citySelect.value;
+      const filtered = selected === "All"
+        ? stays
+        : stays.filter((stay) => stay.city === selected);
+
+      loadStays(filtered, container);
+
+  
+      const modal = document.getElementById("modal");
+      modal.classList.add("hidden");
+    });
+  }
 }
