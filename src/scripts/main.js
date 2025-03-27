@@ -8,6 +8,5 @@ import {
 const staysContainer = document.querySelector('#stays-contenedor');
 
 
-// 🚀 Mostrar estancias al cargar
 loadStays(stays, staysContainer);
 
