@@ -5,6 +5,16 @@
 
 export function loadStays(array, elementHTML) {
   elementHTML.innerHTML = "";
+
+  if (array.length === 0) {
+    elementHTML.innerHTML = `
+      <div class="col-span-full text-center text-gray-500 text-sm">
+        No stays found.
+      </div>
+    `;
+    return;
+  }
+
   array.forEach(function (stay) {
     const template = stayTemplate(stay);
     elementHTML.innerHTML += template;
@@ -43,10 +53,9 @@ export function toggleModal() {
   const modalContent = document.getElementById("modal-content");
 
   if (modal.classList.contains("hidden")) {
-
+   
     modal.classList.remove("hidden");
 
- 
     requestAnimationFrame(() => {
       modalContent.classList.remove("opacity-0", "scale-95");
       modalContent.classList.add("opacity-100", "scale-100");
@@ -56,10 +65,9 @@ export function toggleModal() {
     modalContent.classList.remove("opacity-100", "scale-100");
     modalContent.classList.add("opacity-0", "scale-95");
 
-
     setTimeout(() => {
       modal.classList.add("hidden");
-    }, 300);
+    }, 300); 
   }
 }
 

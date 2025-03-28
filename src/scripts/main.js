@@ -17,12 +17,14 @@ const search = document.getElementById("search");
 const locationInput = document.getElementById("location");
 const guestInput = document.getElementById("guests");
 const suggestionList = document.getElementById("location-suggestions");
+const staysCount = document.getElementById("stays-count"); 
 
 
 let modalJustOpened = false;
 
 
 loadStays(stays, staysContainer);
+staysCount.textContent = `${stays.length} stays`; 
 
 
 const locationBtn = document.getElementById('location-button');
@@ -36,7 +38,7 @@ const openModalHandler = () => {
   modalJustOpened = true;
   setTimeout(() => {
     modalJustOpened = false;
-  }, 100); // para evitar que el modal se cierre por el mismo clic
+  }, 100); // el modal no se cierre por el mismo clic
 };
 
 if (locationBtn) locationBtn.addEventListener('click', openModalHandler);
@@ -109,7 +111,6 @@ document.addEventListener("click", (e) => {
     suggestionList.classList.add("hidden");
   }
 
-
   const modal = document.getElementById("modal");
   const modalContent = document.getElementById("modal-content");
 
@@ -138,6 +139,10 @@ search.addEventListener("click", () => {
       (stay) => stay.maxGuests >= guestValue && stay.city.toLowerCase() === cityValue
     );
   }
+
+
+  staysCount.textContent = `${filtered.length} stay${filtered.length !== 1 ? "s" : ""}`;
+
 
   loadStays(filtered, staysContainer);
   toggleModal();
