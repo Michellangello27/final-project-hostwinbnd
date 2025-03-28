@@ -1,4 +1,4 @@
-# ¡# Proyecto Final Windbnb 🌬️🏡
+# ¡# Proyecto Final Windbnb por Miguel Angel Cornejo Durand🌬️🏡
 
 Este es un ejemplo de aplicación web responsive que simula una plataforma de búsqueda de estancias estilo AirBnB, basada en el desafío “Windbnb” de DevChallenges.
 
@@ -70,4 +70,5 @@ Los archivos importantes utilizados fueron:
 
 ## 5. ¡Comentarios! 🚀
 
-Es un proyecto retador, que me sirvió para afianzar mis conocimientos del curso intensivo en FUNVAL. Me ha permitido decirme a mi mismo que yo puedo hacerlo y sentirme satisfecho de las muchas cosas que he aprendido y he logrado en este corto tiempo y que puedo dar más. Gracias profe Jorge por volcar todo su conocimiento, su carisma y por ssobre todo por su paciencia! Gracias FUNVAL! 💪
+Es un proyecto retador, que me sirvió para afianzar mis conocimientos del curso intensivo en FUNVAL. Me ha permitido decirme a mi mismo que yo puedo hacerlo y sentirme satisfecho de las muchas cosas que he aprendido y he logrado en este corto tiempo y que puedo dar más. Gracias profe Jorge por volcar todo su conocimiento, su carisma y por sobre todo por su paciencia.
+! Gracias FUNVAL! 💪
