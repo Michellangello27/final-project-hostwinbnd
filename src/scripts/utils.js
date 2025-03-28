@@ -1,8 +1,9 @@
 /**
- * Carga las estancias dentro del contenedor HTML.
- * @param {Array} array - Lista de estancias.
- * @param {HTMLElement} elementHTML - Contenedor donde se renderiza el contenido.
+ * Módulo de funciones utilitarias para Windbnb.
+ * Aquí se gestionan funciones de renderizado, filtrado y ayuda general.
  */
+
+
 export function loadStays(array, elementHTML) {
   elementHTML.innerHTML = "";
   array.forEach(function (stay) {
@@ -41,7 +42,7 @@ export function stayTemplate(stay) {
 
 export function toggleModal() {
   const modal = document.getElementById("modal");
-  console.log("toggleModal ejecutado", modal); // ***********
+  //console.log("toggleModal ejecutado", modal); // ***********
   modal.classList.toggle("hidden");
 }
 
@@ -55,8 +56,6 @@ export function addCityFilter(stays, container) {
         : stays.filter((stay) => stay.city === selected);
 
       loadStays(filtered, container);
-
-  
       const modal = document.getElementById("modal");
       modal.classList.add("hidden");
     });
