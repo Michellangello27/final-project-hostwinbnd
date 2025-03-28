@@ -5,17 +5,22 @@
  */
 
 import { stays } from './stays.js';
-import { loadStays,
-         toggleModal,
-         toggleGuestOptions,
-         updateGuestsInput,
-         } from './utils.js';
+import {
+  loadStays,
+  toggleModal,
+  toggleGuestOptions,
+  updateGuestsInput,
+} from './utils.js';
 
 const staysContainer = document.querySelector('#stays-contenedor');
 const search = document.getElementById("search");
 const locationInput = document.getElementById("location");
 const guestInput = document.getElementById("guests");
 const suggestionList = document.getElementById("location-suggestions");
+
+
+let modalJustOpened = false;
+
 
 loadStays(stays, staysContainer);
 
@@ -25,11 +30,19 @@ const guestsBtn = document.getElementById('guests-button');
 const searchBtn = document.getElementById('search-button');
 const closeBtn = document.getElementById('close-modal');
 
-if (locationBtn) locationBtn.addEventListener('click', toggleModal);
-if (guestsBtn) guestsBtn.addEventListener('click', toggleModal);
-if (searchBtn) searchBtn.addEventListener('click', toggleModal);
-if (closeBtn) closeBtn.addEventListener('click', toggleModal);
 
+const openModalHandler = () => {
+  toggleModal();
+  modalJustOpened = true;
+  setTimeout(() => {
+    modalJustOpened = false;
+  }, 100); // para evitar que el modal se cierre por el mismo clic
+};
+
+if (locationBtn) locationBtn.addEventListener('click', openModalHandler);
+if (guestsBtn) guestsBtn.addEventListener('click', openModalHandler);
+if (searchBtn) searchBtn.addEventListener('click', openModalHandler);
+if (closeBtn) closeBtn.addEventListener('click', toggleModal);
 
 
 const guestsInput = document.getElementById("guests-input");
@@ -66,7 +79,6 @@ decreaseChildren?.addEventListener("click", () => {
 });
 
 
-
 locationInput.addEventListener("focus", () => {
   suggestionList.classList.remove("hidden");
 });
@@ -92,8 +104,22 @@ suggestionList.addEventListener("click", (e) => {
 
 
 document.addEventListener("click", (e) => {
+
   if (!document.getElementById("location-container").contains(e.target)) {
     suggestionList.classList.add("hidden");
+  }
+
+
+  const modal = document.getElementById("modal");
+  const modalContent = document.getElementById("modal-content");
+
+  if (
+    !modal.classList.contains("hidden") &&
+    !modalContent.contains(e.target) &&
+    window.innerWidth >= 768 &&
+    !modalJustOpened
+  ) {
+    toggleModal();
   }
 });
 
@@ -112,7 +138,6 @@ search.addEventListener("click", () => {
       (stay) => stay.maxGuests >= guestValue && stay.city.toLowerCase() === cityValue
     );
   }
-
 
   loadStays(filtered, staysContainer);
   toggleModal();

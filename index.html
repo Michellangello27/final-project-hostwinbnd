@@ -50,14 +50,14 @@
     </main>
 
 
-    <div class="bg-slate-950/70 h-screen w-full fixed inset-0 z-50 hidden" id="modal">
-        <div class="bg-white w-full max-w-3xl mx-auto mt-12 md:mt-20 p-4 md:p-8 rounded-xl shadow-md"
+    <div class="bg-slate-950/70 h-screen w-full fixed inset-0 z-50 hidden transition-opacity duration-300" id="modal">
+        <div class="bg-white w-full max-w-3xl mx-auto mt-12 md:mt-20 p-4 md:p-8 rounded-xl shadow-md transform transition-all duration-300 opacity-0 scale-95"
             id="modal-content">
 
 
             <div class="flex justify-between items-center mb-4">
                 <h2 class="text-sm font-bold text-gray-700">Edit your search</h2>
-                <button class="text-xl font-bold text-gray-700" id="close-modal">&times;</button>
+                <button class="text-xl font-bold text-gray-700 block md:hidden" id="close-modal">&times;</button>
             </div>
 
 
@@ -69,7 +69,6 @@
                     <label for="location" class="text-[10px] font-bold text-gray-500 uppercase">Location</label>
                     <input type="text" name="location" id="location" placeholder="Add location"
                         class="w-full outline-none text-sm placeholder:text-gray-400" autocomplete="off" />
-
 
                     <ul id="location-suggestions"
                         class="absolute top-full left-0 w-full bg-white border border-gray-200 rounded-md shadow-md mt-1 z-10 hidden">
@@ -112,12 +111,14 @@
                     </ul>
                 </div>
 
+
                 <div class="flex-1 shadow-md border border-gray-200 h-14 rounded-xl md:rounded-none px-4 py-2 flex flex-col justify-between focus-within:border-gray-900"
                     id="guests-input">
                     <label for="guests" class="text-[10px] font-bold text-gray-500 uppercase">Guests</label>
                     <input type="text" name="guests" id="guests" placeholder="Add guests"
                         class="w-full outline-none text-sm placeholder:text-gray-400" />
                 </div>
+
 
                 <div
                     class="flex-1 shadow-md border border-gray-200 h-14 rounded-xl md:rounded-r-lg md:rounded-l-none px-4 py-2 flex items-center justify-center transition focus-within:border-gray-900">
@@ -135,7 +136,6 @@
 
 
             <div id="guest-options" class="hidden flex flex-col gap-6 mt-6">
-
                 <div>
                     <h3 class="text-sm font-bold text-gray-700">Adults</h3>
                     <p class="text-xs text-gray-400">Ages 13 or above</p>
@@ -145,7 +145,6 @@
                         <button class="border px-2 rounded text-lg" id="increase-adults">+</button>
                     </div>
                 </div>
-
 
                 <div>
                     <h3 class="text-sm font-bold text-gray-700">Children</h3>

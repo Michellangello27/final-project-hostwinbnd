@@ -40,7 +40,27 @@ export function stayTemplate(stay) {
 
 export function toggleModal() {
   const modal = document.getElementById("modal");
-  modal.classList.toggle("hidden");
+  const modalContent = document.getElementById("modal-content");
+
+  if (modal.classList.contains("hidden")) {
+
+    modal.classList.remove("hidden");
+
+ 
+    requestAnimationFrame(() => {
+      modalContent.classList.remove("opacity-0", "scale-95");
+      modalContent.classList.add("opacity-100", "scale-100");
+    });
+  } else {
+
+    modalContent.classList.remove("opacity-100", "scale-100");
+    modalContent.classList.add("opacity-0", "scale-95");
+
+
+    setTimeout(() => {
+      modal.classList.add("hidden");
+    }, 300);
+  }
 }
 
 export function toggleGuestOptions() {
