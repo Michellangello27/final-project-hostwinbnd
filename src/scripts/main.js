@@ -35,6 +35,10 @@ const openModalHandler = () => {
 
 
   guestInput.value = "";
+  locationInput.value = "";
+
+
+  suggestionList.classList.add("hidden");
 
   setTimeout(() => {
     modalJustOpened = false;
@@ -94,18 +98,26 @@ locationInput.addEventListener("focus", () => {
   suggestionList.classList.remove("hidden");
 });
 
-locationInput.addEventListener("input", () => {
-  const term = locationInput.value.toLowerCase();
-  [...suggestionList.children].forEach((li) => {
-    const city = li.getAttribute("data-city").toLowerCase();
-    li.classList.toggle("hidden", !city.includes(term));
+
+locationInput.addEventListener("input", function () {
+  const textoUsuario = this.value.toLowerCase(); 
+  const sugerencias = Array.from(suggestionList.children); 
+
+  sugerencias.forEach(function (item) {
+    const ciudad = item.dataset.city.toLowerCase(); 
+    if (ciudad.includes(textoUsuario)) {
+      item.classList.remove("hidden"); 
+    } else {
+      item.classList.add("hidden"); 
+    }
   });
 });
+
 
 suggestionList.addEventListener("click", (e) => {
   const li = e.target.closest("li[data-city]");
   if (li) {
-    locationInput.value = li.getAttribute("data-city");
+    locationInput.value = li.dataset.city;
     suggestionList.classList.add("hidden");
   }
 });
@@ -128,6 +140,7 @@ document.addEventListener("click", (e) => {
     toggleModal();
   }
 });
+
 
 search.addEventListener("click", () => {
   let cityValue = locationInput.value.split(",")[0].trim().toLowerCase();
