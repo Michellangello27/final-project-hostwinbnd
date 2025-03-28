@@ -3,7 +3,6 @@
  * Aquí se gestionan funciones de renderizado, filtrado y ayuda general.
  */
 
-
 export function loadStays(array, elementHTML) {
   elementHTML.innerHTML = "";
   array.forEach(function (stay) {
@@ -11,7 +10,6 @@ export function loadStays(array, elementHTML) {
     elementHTML.innerHTML += template;
   });
 }
-
 
 export function stayTemplate(stay) {
   const superHost = stay.superHost
@@ -42,22 +40,5 @@ export function stayTemplate(stay) {
 
 export function toggleModal() {
   const modal = document.getElementById("modal");
-  //console.log("toggleModal ejecutado", modal); // ***********
   modal.classList.toggle("hidden");
-}
-
-export function addCityFilter(stays, container) {
-  const citySelect = document.getElementById("city-select");
-  if (citySelect && container) {
-    citySelect.addEventListener("change", () => {
-      const selected = citySelect.value;
-      const filtered = selected === "All"
-        ? stays
-        : stays.filter((stay) => stay.city === selected);
-
-      loadStays(filtered, container);
-      const modal = document.getElementById("modal");
-      modal.classList.add("hidden");
-    });
-  }
 }
