@@ -40,91 +40,83 @@
         </div>
     </header>
 
-
     <section class="px-4 md:px-6 py-4 flex justify-between items-center">
         <h2 class="text-xl font-bold">Stays in Finland</h2>
         <span class="text-sm text-gray-500" id="stays-count">12+ stays</span>
     </section>
 
     <main id="stays-contenedor" class="px-4 md:px-6 pb-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        <!-- Aquí van los Stays de manera dinámica -->
+        <!-- Aquí van los stays -->
     </main>
 
-
-    <div class="bg-slate-950/70 h-screen w-full fixed inset-0 z-50 hidden transition-opacity duration-300" id="modal">
-        <div class="bg-white w-full max-w-3xl mx-auto mt-12 md:mt-20 p-4 md:p-8 rounded-xl shadow-md transform transition-all duration-300 opacity-0 scale-95"
+    <div class="bg-slate-950/70 h-screen w-full fixed inset-0 z-50 hidden" id="modal">
+        <div class="relative bg-white w-full max-w-3xl mx-4 md:mx-auto mt-12 md:mt-20 p-4 md:p-8 rounded-xl shadow-md transform transition-all duration-300 opacity-0 scale-95"
             id="modal-content">
-
 
             <div class="flex justify-between items-center mb-4">
                 <h2 class="text-sm font-bold text-gray-700">Edit your search</h2>
                 <button class="text-xl font-bold text-gray-700 block md:hidden" id="close-modal">&times;</button>
             </div>
 
-
-            <div class="flex flex-col md:flex-row gap-4 md:items-end">
-
+            <div class="flex flex-col items-center md:flex-row gap-4 md:items-end">
 
                 <div class="relative flex-1 shadow-md border border-gray-200 h-14 rounded-xl md:rounded-l-lg md:rounded-r-none px-4 py-2 flex flex-col justify-between focus-within:border-gray-900"
                     id="location-container">
                     <label for="location" class="text-[10px] font-bold text-gray-500 uppercase">Location</label>
                     <input type="text" name="location" id="location" placeholder="Add location"
                         class="w-full outline-none text-sm placeholder:text-gray-400" autocomplete="off" />
-
                     <ul id="location-suggestions"
                         class="absolute top-full left-0 w-full bg-white border border-gray-200 rounded-md shadow-md mt-1 z-10 hidden">
                         <li class="px-4 py-2 cursor-pointer hover:bg-gray-100 flex items-center gap-2"
-                            data-city="Helsinki, Finland">
-                            <svg class="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" stroke-width="2"
-                                viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M17.657 16.657L13.414 12.414M6.343 7.343a8 8 0 0111.314 11.314l-4.243-4.243a4 4 0 10-5.656-5.656z" />
-                            </svg>
-                            Helsinki, Finland
-                        </li>
+                            data-city="Helsinki, Finland">Helsinki</li>
                         <li class="px-4 py-2 cursor-pointer hover:bg-gray-100 flex items-center gap-2"
-                            data-city="Turku, Finland">
-                            <svg class="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" stroke-width="2"
-                                viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M17.657 16.657L13.414 12.414M6.343 7.343a8 8 0 0111.314 11.314l-4.243-4.243a4 4 0 10-5.656-5.656z" />
-                            </svg>
-                            Turku, Finland
-                        </li>
+                            data-city="Turku, Finland">Turku</li>
                         <li class="px-4 py-2 cursor-pointer hover:bg-gray-100 flex items-center gap-2"
-                            data-city="Oulu, Finland">
-                            <svg class="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" stroke-width="2"
-                                viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M17.657 16.657L13.414 12.414M6.343 7.343a8 8 0 0111.314 11.314l-4.243-4.243a4 4 0 10-5.656-5.656z" />
-                            </svg>
-                            Oulu, Finland
-                        </li>
+                            data-city="Oulu, Finland">Oulu</li>
                         <li class="px-4 py-2 cursor-pointer hover:bg-gray-100 flex items-center gap-2"
-                            data-city="Vaasa, Finland">
-                            <svg class="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" stroke-width="2"
-                                viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M17.657 16.657L13.414 12.414M6.343 7.343a8 8 0 0111.314 11.314l-4.243-4.243a4 4 0 10-5.656-5.656z" />
-                            </svg>
-                            Vaasa, Finland
-                        </li>
+                            data-city="Vaasa, Finland">Vaasa</li>
                     </ul>
                 </div>
 
 
-                <div class="flex-1 shadow-md border border-gray-200 h-14 rounded-xl md:rounded-none px-4 py-2 flex flex-col justify-between focus-within:border-gray-900"
+                <div class="relative flex-1 shadow-md border border-gray-200 h-14 rounded-xl md:rounded-none px-4 py-2 flex flex-col justify-between focus-within:border-gray-900"
                     id="guests-input">
                     <label for="guests" class="text-[10px] font-bold text-gray-500 uppercase">Guests</label>
                     <input type="text" name="guests" id="guests" placeholder="Add guests"
                         class="w-full outline-none text-sm placeholder:text-gray-400" readonly />
+
+
+                    <div id="guest-options" class="hidden flex flex-col gap-6 mt-6
+                        bg-white shadow-lg rounded-xl px-4 py-4 md:px-8 z-50
+                        md:absolute md:top-[120px] md:left-1/2 md:-translate-x-1/2 md:w-72">
+
+                        <div>
+                            <h3 class="text-sm font-bold text-gray-700">Adults</h3>
+                            <p class="text-xs text-gray-400">Ages 13 or above</p>
+                            <div class="flex items-center gap-4 mt-1">
+                                <button class="border px-2 rounded text-lg" id="decrease-adults">-</button>
+                                <span class="text-sm font-medium" id="adult-count">1</span>
+                                <button class="border px-2 rounded text-lg" id="increase-adults">+</button>
+                            </div>
+                        </div>
+
+                        <div>
+                            <h3 class="text-sm font-bold text-gray-700">Children</h3>
+                            <p class="text-xs text-gray-400">Ages 13 or below</p>
+                            <div class="flex items-center gap-4 mt-1">
+                                <button class="border px-2 rounded text-lg" id="decrease-children">-</button>
+                                <span class="text-sm font-medium" id="children-count">0</span>
+                                <button class="border px-2 rounded text-lg" id="increase-children">+</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
 
                 <div
                     class="flex-1 shadow-md border border-gray-200 h-14 rounded-xl md:rounded-r-lg md:rounded-l-none px-4 py-2 flex items-center justify-center transition focus-within:border-gray-900">
                     <button
-                        class="bg-red-500 hover:bg-red-600 text-white font-semibold px-4 py-2 rounded-2xl shadow-sm flex items-center gap-2 transition focus:outline-none w-full md:w-auto"
+                        class="bg-red-500 hover:bg-red-600 text-white font-semibold px-4 py-2 rounded-2xl shadow-sm flex items-center gap-2 transition focus:outline-none mx-auto md:mx-0 md:w-auto"
                         id="search">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round"
@@ -132,29 +124,6 @@
                         </svg>
                         <span>Search</span>
                     </button>
-                </div>
-            </div>
-
-
-            <div id="guest-options" class="hidden flex flex-col gap-6 mt-6">
-                <div>
-                    <h3 class="text-sm font-bold text-gray-700">Adults</h3>
-                    <p class="text-xs text-gray-400">Ages 13 or above</p>
-                    <div class="flex items-center gap-4 mt-1">
-                        <button class="border px-2 rounded text-lg" id="decrease-adults">-</button>
-                        <span class="text-sm font-medium" id="adult-count">1</span>
-                        <button class="border px-2 rounded text-lg" id="increase-adults">+</button>
-                    </div>
-                </div>
-
-                <div>
-                    <h3 class="text-sm font-bold text-gray-700">Children</h3>
-                    <p class="text-xs text-gray-400">Ages 13 or below</p>
-                    <div class="flex items-center gap-4 mt-1">
-                        <button class="border px-2 rounded text-lg" id="decrease-children">-</button>
-                        <span class="text-sm font-medium" id="children-count">0</span>
-                        <button class="border px-2 rounded text-lg" id="increase-children">+</button>
-                    </div>
                 </div>
             </div>
 
