@@ -5,7 +5,11 @@
  */
 
 import { stays } from './stays.js';
-import { loadStays, toggleModal } from './utils.js';
+import { loadStays,
+         toggleModal,
+         toggleGuestOptions,
+         updateGuestsInput,
+         } from './utils.js';
 
 const staysContainer = document.querySelector('#stays-contenedor');
 const search = document.getElementById("search");
@@ -27,9 +31,7 @@ if (searchBtn) searchBtn.addEventListener('click', toggleModal);
 if (closeBtn) closeBtn.addEventListener('click', toggleModal);
 
 
-function toggleGuestOptions() {
-  document.getElementById("guest-options").classList.toggle("hidden");
-}
+
 const guestsInput = document.getElementById("guests-input");
 if (guestsInput) guestsInput.addEventListener("click", toggleGuestOptions);
 
@@ -63,12 +65,6 @@ decreaseChildren?.addEventListener("click", () => {
   updateGuestsInput();
 });
 
-
-function updateGuestsInput() {
-  const adults = parseInt(document.getElementById("adult-count").textContent);
-  const children = parseInt(document.getElementById("children-count").textContent);
-  guestInput.value = adults + children;
-}
 
 
 locationInput.addEventListener("focus", () => {

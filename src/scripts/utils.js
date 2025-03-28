@@ -42,3 +42,13 @@ export function toggleModal() {
   const modal = document.getElementById("modal");
   modal.classList.toggle("hidden");
 }
+
+export function toggleGuestOptions() {
+  document.getElementById("guest-options").classList.toggle("hidden");
+}
+
+export function updateGuestsInput() {
+  const adults = parseInt(document.getElementById("adult-count").textContent);
+  const children = parseInt(document.getElementById("children-count").textContent);
+  guestInput.value = adults + children;
+}
