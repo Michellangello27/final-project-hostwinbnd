@@ -70,6 +70,10 @@ Los archivos importantes utilizados fueron:
 
 ## 5. ¡Comentarios! 🚀
 
-Añadi un pequeño efecto en el modal cuaando este funciona
+Como Adicionales realice lo siguiente:
+
+- Añadi un pequeño efecto en el modal cuaando este funciona
+- En el filtro de busqueda por personas especifique en el input la cantidad de adultos y niños
+
 Es un proyecto retador, que me sirvió para afianzar mis conocimientos del curso intensivo en FUNVAL. Me ha permitido decirme a mi mismo que yo puedo hacerlo y sentirme satisfecho de las muchas cosas que he aprendido y he logrado en este corto tiempo y que puedo dar más. Gracias profe Jorge por volcar todo su conocimiento, su carisma y por sobre todo por su paciencia.
 ! Gracias FUNVAL! 💪

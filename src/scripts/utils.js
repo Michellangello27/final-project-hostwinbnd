@@ -53,7 +53,6 @@ export function toggleModal() {
   const modalContent = document.getElementById("modal-content");
 
   if (modal.classList.contains("hidden")) {
-   
     modal.classList.remove("hidden");
 
     requestAnimationFrame(() => {
@@ -61,13 +60,12 @@ export function toggleModal() {
       modalContent.classList.add("opacity-100", "scale-100");
     });
   } else {
-
     modalContent.classList.remove("opacity-100", "scale-100");
     modalContent.classList.add("opacity-0", "scale-95");
 
     setTimeout(() => {
       modal.classList.add("hidden");
-    }, 300); 
+    }, 300);
   }
 }
 
@@ -75,8 +73,14 @@ export function toggleGuestOptions() {
   document.getElementById("guest-options").classList.toggle("hidden");
 }
 
-export function updateGuestsInput() {
+export function updateGuestsInput(inputElement) {
   const adults = parseInt(document.getElementById("adult-count").textContent);
   const children = parseInt(document.getElementById("children-count").textContent);
-  guestInput.value = adults + children;
+  const total = adults + children;
+
+  if (total > 0) {
+    inputElement.value = `${total} guest${total > 1 ? "s" : ""} (${adults} adult${adults !== 1 ? "s" : ""} - ${children} niño${children !== 1 ? "s" : ""})`;
+  } else {
+    inputElement.value = "";
+  }
 }
